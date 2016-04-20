@@ -1,0 +1,51 @@
+{
+  "esclient": {
+    "keepAlive": true,
+    "maxRetries": "3",
+    "deadTimeout": "3000",
+    "maxSockets": "20",
+    "hosts": [
+      {
+        "env": "dev",
+        "protocol": "http",
+        "host": "elasticsearch",
+        "port": 9200
+      }
+    ],
+    "log": [{
+      "type": "stdio",
+      "level": [ "error", "warning" ]
+    }]
+  },
+  "logger": {
+    "level": "verbose"
+  },
+  "imports": {
+    "adminLookup": true,
+    "openstreetmap": {
+      "datapath": "/mnt/data/openstreetmap/",
+      "leveldbpath": "/tmp",
+      "adminLookup": true,
+      "import": [{
+        "type": { "node": "osmnode", "way": "osmway" },
+        "filename": "monaco-latest.osm.pbf"
+      }]
+    },
+    "openaddresses": {
+      "datapath": "/mnt/data/openaddresses/",
+      "admin-values": true
+    },
+    "whosonfirst": {
+      "datapath": "/mnt/data/whosonfirst/wof_data"
+    }
+  },
+  "elasticsearch": {
+    "settings": {
+      "index": {
+        "number_of_replicas": "0",
+        "number_of_shards": "1",
+        "index.index_concurrency": "24"
+      }
+    }
+  }
+}

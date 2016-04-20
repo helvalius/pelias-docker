@@ -1,0 +1,11 @@
+version: '2'
+services:
+  elasticsearch:
+    build: es
+    ports:
+     - 9200
+     - 9300
+  pelias:
+    build: pelias
+    depends_on:
+      - elasticsearch
