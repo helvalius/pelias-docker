@@ -5,7 +5,20 @@ services:
     ports:
      - 9200
      - 9300
+  whosonfirst:
+    build: whosonfirst
+    image: pelias-whosonfirst-data
+    volumes:
+      - /mnt/data/whosonfirst/data
   pelias:
     build: pelias
     depends_on:
       - elasticsearch
+    volumes_from:
+      - whosonfirst
+      - geonames
+  geonames:
+    build: geonames
+    image: pelias-geonames-data
+    volumes:
+      - /mnt/data/geonames/data

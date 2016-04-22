@@ -23,7 +23,7 @@
   "imports": {
     "adminLookup": true,
     "openstreetmap": {
-      "datapath": "/mnt/data/openstreetmap/",
+      "datapath": "/mnt/data/openstreetmap",
       "leveldbpath": "/tmp",
       "adminLookup": true,
       "import": [{
@@ -37,6 +37,10 @@
     },
     "whosonfirst": {
       "datapath": "/mnt/data/whosonfirst/wof_data"
+    },
+    "geonames": {
+      "datapath": "/mnt/data/geonames/data",
+      "adminLookup": true
     }
   },
   "elasticsearch": {
